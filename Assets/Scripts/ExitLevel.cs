@@ -7,6 +7,10 @@ public class ExitLevel : MonoBehaviour
     private bool transition = false;
     [SerializeField] float Countdown = 1.5f;
 
+    private void Awake()
+    {
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")

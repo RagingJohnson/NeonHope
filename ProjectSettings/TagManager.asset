@@ -7,6 +7,12 @@ TagManager:
   - Gravity
   - Detonation
   - VisibleBoundary
+  - ClusterObject
+  - CyanJunction
+  - MagentaJunction
+  - YellowJunction
+  - Laser
+  - Exit
   layers:
   - Default
   - TransparentFX
@@ -14,12 +20,12 @@ TagManager:
   - DetonationLayer
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - BlueLaser
+  - RedLaser
+  - GreenLaser
+  - Junction
+  - Exit
+  - Player
   - 
   - 
   - 

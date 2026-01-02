@@ -5,11 +5,11 @@ using UnityEngine;
 public class Detonate : MonoBehaviour
 {
     // Start is called before the first frame update
-    List<GameObject> ActiveDetonations = new List<GameObject>();
-    List<GameObject> DeadDetonations = new List<GameObject>();
-    [SerializeField] GameObject DetonationPrefab;
+    List<Detonation> ActiveDetonations = new List<Detonation>();
+    List<Detonation> DeadDetonations = new List<Detonation>();
+    [SerializeField] Detonation DetonationPrefab;
     [SerializeField] float DetonationMaxCooldown = 3f;
-    float DetonationCooldown;
+    float DetonationCooldown = 0;
     void Start()
     {
         //Position the detonation
@@ -19,7 +19,6 @@ public class Detonate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Trigger the detonation
         UpdateDetonations();
 
         CleanUpDetonations();
@@ -27,22 +26,23 @@ public class Detonate : MonoBehaviour
 
     public void CreateDetonation()
     {
-        /*
-        if(DetonationCooldown < DetonationMaxCooldown)
-        {
-            DetonationCooldown = DetonationCooldown <= 0 ? DetonationMaxCooldown : DetonationCooldown - Time.deltaTime;
-            return;
-        }
-        */
+        Detonation newDetonation = Instantiate(DetonationPrefab).GetComponent<Detonation>();
+        newDetonation.transform.position = transform.position;
+        ActiveDetonations.Add(newDetonation);
+    }
 
-        GameObject newDetonation = Instantiate(DetonationPrefab);
+    public void CreateDetonation(float expansionRate, float maxScale)
+    {
+        Detonation newDetonation = Instantiate(DetonationPrefab).GetComponent<Detonation>();
+        newDetonation.ExpansionRate = expansionRate;
+        newDetonation.MaxScale = maxScale;
         newDetonation.transform.position = transform.position;
         ActiveDetonations.Add(newDetonation);
     }
 
     void UpdateDetonations()
     {
-        foreach (GameObject detonation in ActiveDetonations)
+        foreach (Detonation detonation in ActiveDetonations)
         {
             if (!detonation.GetComponent<Detonation>().Alive)
             {
@@ -57,10 +57,10 @@ public class Detonate : MonoBehaviour
 
     void CleanUpDetonations()
     {
-        foreach (GameObject detonation in DeadDetonations)
+        foreach (Detonation detonation in DeadDetonations)
         {
             ActiveDetonations.Remove(detonation);
-            Destroy(detonation);
+            Object.Destroy(detonation.gameObject);
         }
 
         DeadDetonations.Clear();

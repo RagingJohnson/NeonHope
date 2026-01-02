@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 7399356796764606729}
   - component: {fileID: 615646146335417746}
   - component: {fileID: 3552419810433767731}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Detonation
   m_TagString: Detonation
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ CircleCollider2D:
     m_Bits: 8
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 2103
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

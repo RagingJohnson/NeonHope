@@ -6,8 +6,8 @@ public class Detonation : MonoBehaviour
 {
     // Start is called before the first frame update
     float scale = 0;
-    [SerializeField] float ExpansionRate = .2f;
-    [SerializeField] float MaxScale = .2f;
+    [SerializeField] public float ExpansionRate = .2f;
+    [SerializeField] public float MaxScale = .2f;
     public bool Alive = true;
     void Start()
     {
